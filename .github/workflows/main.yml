@@ -19,3 +19,7 @@ jobs:
           cx_client_secret: ${{ secrets.SECRET }}
           branch: main
           additional_params: --scs-repo-url "https://github.com/SCS-Micro-Engines/CxSeg_ScorecardTest" --scs-repo-token "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"
+          github_token: "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"
+          repo_name: TesteSCS
+          namespace: josepfernandes
+          source_dir: .

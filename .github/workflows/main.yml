@@ -18,6 +18,5 @@ jobs:
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.SECRET }}
           branch: main
-          additional_params: --scs-repo-url "https://github.com/SCS-Micro-Engines/CxSeg_ScorecardTest" --scs-repo-token "github_token: "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" 
-         
+          additional_params: --scs-repo-url "https://github.com/SCS-Micro-Engines/CxSeg_ScorecardTest" --scs-repo-token "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"         
           

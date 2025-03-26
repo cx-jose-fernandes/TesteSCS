@@ -12,7 +12,7 @@ jobs:
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
-          project_name: CxSeg_Jota_Test
+          project_name: CxSeg_Jota
           cx_tenant: prod_na_testing
           base_uri:  https://ast.checkmarx.net
           cx_client_id: ${{ secrets.CLIENT_ID }}

@@ -1,44 +1,38 @@
-name: Build Docker Image
+name: Build and Scan Docker Image (GHCR)
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to DockerHub
+      - name: Log in to GitHub Container Registry (GHCR)
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ghcr.io
+          username: ${{ github.GITHUB_USER }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image to GHCR
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: josepf99/jota_teste:latest
+          tags: ghcr.io/${{ github.cx-jose-fernandes }}/joseteste:latest
           
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Authenticate to GHCR and pull the docker image
-        run: | 
-              docker login --username ${{ secrets.USER }} --password ${{ secrets.TOKEN }} ghcr.io
-              docker pull  ghcr.io/jota_teste:latest
+        
       - name: Checkmarx One CLI Action
         uses: checkmarx/ast-github-action@main #Github Action version
         with:

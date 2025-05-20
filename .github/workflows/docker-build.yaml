@@ -46,4 +46,4 @@ jobs:
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.SECRET }}
           branch: main
-          additional_params: --scan-types "container-security"
+          additional_params: --scan-types "container-security" --container-image "joseteste/latest"

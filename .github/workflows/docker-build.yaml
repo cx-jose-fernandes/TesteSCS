@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
-
+      
+permissions:
+  contents: read
+  packages: write  # 👈 required to push to GHCR
+  
 jobs:
   build-and-push:
     runs-on: ubuntu-latest

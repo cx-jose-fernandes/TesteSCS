@@ -30,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: josepf99/your-image-name:latest
+          tags: josepf99/jota_teste:latest

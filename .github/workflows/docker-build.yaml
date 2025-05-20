@@ -31,3 +31,16 @@ jobs:
           context: .
           push: true
           tags: josepf99/jota_teste:latest
+          
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Checkmarx One CLI Action
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          project_name: Jota_SCA
+          cx_tenant: cx_seg
+          base_uri:  https://eu.ast.checkmarx.net
+          cx_client_id: ${{ secrets.CLIENT_ID }}
+          cx_client_secret: ${{ secrets.SECRET }}
+          branch: main
+          additional_params: --scan-types "containers-security"

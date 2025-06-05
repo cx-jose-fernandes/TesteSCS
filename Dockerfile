@@ -1,22 +1,12 @@
-# Base image
-FROM alpine:3.15
+FROM rockylinux:8
 
-# Add common packages known to have CVEs in older versions
-RUN apk add --no-cache \
-    bash \
-    curl \
-    openssl \
-    git \
-    busybox \
-    libssl1.1 \
-    wget \
-    openjdk8-jre
+# Atualiza o sistema e instala libxml2 na versão específica
+RUN dnf -y update && \
+    dnf -y install \
+    https://dl.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os/Packages/l/libxml2-2.9.7-18.el8_10.1.x86_64.rpm && \
+    dnf clean all
 
-# Optional: Install pip + a Python package with vulnerabilities
-RUN apk add --no-cache python3 py3-pip && \
-    pip3 install requests==2.19.1  # old version with known issues
+# Verifica a instalação
+RUN rpm -q libxml2
 
-# Create a dummy file to verify image content
-RUN echo "This image is intentionally vulnerable for testing scanners." > /VULN-README.txt
-
-CMD ["cat", "/VULN-README.txt"]
+CMD ["/bin/bash"]

@@ -1,11 +1,5 @@
 # Starter pipeline
-- task: Checkmarx AST@3
-  inputs:
-    CheckmarxService: 'CxAST Connection'
-    projectName: 'Jota_SCA'
-    branchName: 'main'
-    tenantName: 'cx_seg'
-    additionalParams: '--scan-types container-security,  --container-images "C:\Users\JosePF\minha-imagem.tar", --containers-local-resolution'
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -15,12 +9,11 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: Checkmarx AST@3
+  inputs:
+    CheckmarxService: 'CxAST Connection'
+    projectName: 'Jota_SCA'
+    branchName: 'main'
+    tenantName: 'cx_seg'
+    additionalParams: '--scan-types container-security,  --container-images "C:\Users\JosePF\minha-imagem.tar", --containers-local-resolution, --debug'

@@ -16,4 +16,4 @@ steps:
     projectName: 'Jota_SCA'
     branchName: 'main'
     tenantName: 'cx_seg'
-    additionalParams: '--scan-types container-security,  --container-images "C:\Users\JosePF\minha-imagem.tar", --debug'
+    additionalParams: '--scan-types containers,  --container-images "C:\Users\JosePF\minha-imagem.tar",--containers-local-resolution, --debug'

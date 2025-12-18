@@ -26,7 +26,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Pull image from Docker Hub
-        run: docker pull testhdfc:latest 
+        run: docker pull josepf99/testhdfc:latest 
           
       - name: Checkout
         uses: actions/checkout@v2
@@ -40,4 +40,4 @@ jobs:
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.SECRET }}
           branch: main
-          additional_params: --scan-types "container-security" --container-images "testhdfc:latest"
+          additional_params: --scan-types "container-security" --container-images "josepf99/testhdfc:latest"
